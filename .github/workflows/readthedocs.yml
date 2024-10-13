@@ -1,0 +1,10 @@
+name: publish-readthedocs
+run-name: publish-readthedocs
+on: [push]
+jobs:
+  publish-readthedocs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: publish readthedocs
+        run: 'curl -X POST -H "Authorization: Token ${{ secrets.RTD_TOKEN }}" https://readthedocs.org/api/v3/projects/my-own-readthedocs-demo/versions/latest/builds/'
